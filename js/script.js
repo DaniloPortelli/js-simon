@@ -15,20 +15,19 @@
 // creare un timer che, allo scadere del tempo, renda display none i numeri random e display block gli input in cui inserire i numeri
 // creare una condizione che permetta l'individuazione dei numeri inseriti negli input, magari utilizzando un ciclo for che faccia una comparazione tra due array
 
+
+// Numeri Random per array
 let j = Math.floor((Math.random() * 50) + 1);
 let k = Math.floor((Math.random() * 50) + 1);
 let w = Math.floor((Math.random() * 50) + 1);
 let x = Math.floor((Math.random() * 50) + 1);
 let y = Math.floor((Math.random() * 50) + 1);
 const randomNumbers = [j, k, w, x, y];
+randomNumbersList.innerHTML = randomNumbers
 
 
 
-
-let userNumbers = "";
-const userNumbersArray = [];
-console.log(userNumbersArray)
-
+// Variabili per collegare html e js
 const randomNumbersList = document.getElementById("numbers-list");
 const inputGroup = document.getElementById("input-group");
 const form = document.getElementById("answers-form");
@@ -36,45 +35,40 @@ const formNumbersField = document.getElementsByClassName("form-control");
 const btn = document.getElementById("button");
 const message = document.getElementById("message")
 
-randomNumbersList.innerHTML = randomNumbers
+const userNumber = "";
+const userNumbersArray = [];
 
-let seconds = 2;
+
+
+// Sezione timer
+const seconds = 2;
 const timer = setInterval(countdown, 1000);
 
 function countdown() {
     seconds--;
-
-if (seconds === 0){
-    clearTimeout(timer);
-    randomNumbersList.remove();
-    form.classList.remove("d-none");
+        if (seconds === 0){
+        clearTimeout(timer);
+        randomNumbersList.remove();
+        form.classList.remove("d-none");
+    }
 }
 
-}
 
 
-
-
+// Sezione eventi button
 button.addEventListener("click", function(event){
-event.preventDefault()
+    event.preventDefault()
 
-for (let i = 0; i < 5 ; i++){
-    let userNumbers = formNumbersField[i].value
-   userNumbersArray.push(userNumbers);
-   let sameNumber = randomNumbers[i]
+        for (let i = 0; i < 5 ; i++){
+            let userNumber = formNumbersField[i].value
+            userNumbersArray.push(userNumber);
+            let sameNumber = randomNumbers[i]
 
- if (userNumbers == randomNumbers[i] ){
-    message.innerHTML = `Hai indovinato questi numeri: ${sameNumber}`
-
-    
- } else {
- }
- 
-
-
-}
-
-
+            if (userNumber == randomNumbers[i] ){
+            message.innerHTML = `Hai indovinato questi numeri: ${sameNumber}`
+            } else {
+            }
+        }   
 }
 )
 
