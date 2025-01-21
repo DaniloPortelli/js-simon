@@ -20,16 +20,21 @@ let k = Math.floor((Math.random() * 50) + 1);
 let w = Math.floor((Math.random() * 50) + 1);
 let x = Math.floor((Math.random() * 50) + 1);
 let y = Math.floor((Math.random() * 50) + 1);
-
 const randomNumbers = [j, k, w, x, y];
-const userNumbers = [];
-console.log(userNumbers)
+
+
+
+
+let userNumbers = "";
+const userNumbersArray = [];
+console.log(userNumbersArray)
+
 const randomNumbersList = document.getElementById("numbers-list");
 const inputGroup = document.getElementById("input-group");
 const form = document.getElementById("answers-form");
-const formNumbersField = document.querySelectorAll(".form-control");
+const formNumbersField = document.getElementsByClassName("form-control");
 const btn = document.getElementById("button");
-
+const message = document.getElementById("message")
 
 randomNumbersList.innerHTML = randomNumbers
 
@@ -48,15 +53,26 @@ if (seconds === 0){
 }
 
 
+
+
 button.addEventListener("click", function(event){
 event.preventDefault()
 
-formNumbersField.innerHTML = formNumbersField.value
+for (let i = 0; i < 5 ; i++){
+    let userNumbers = formNumbersField[i].value
+   userNumbersArray.push(userNumbers);
+   let sameNumber = randomNumbers[i]
 
-console.log(formNumbersField.innerHTML)
+ if (userNumbers == randomNumbers[i] ){
+    message.innerHTML = `Hai indovinato questi numeri: ${sameNumber}`
 
     
+ } else {
+ }
+ 
 
+
+}
 
 
 }
