@@ -25,7 +25,6 @@ let y = Math.floor((Math.random() * 50) + 1);
 const randomNumbers = [j, k, w, x, y];
 
 
-
 // Variabili per collegare html e js
 const randomNumbersList = document.getElementById("numbers-list");
 const inputGroup = document.getElementById("input-group");
@@ -37,6 +36,7 @@ const message = document.getElementById("message")
 const userNumber = "";
 const userNumbersArray = [];
 
+
 randomNumbersList.innerHTML = randomNumbers
 
 
@@ -46,7 +46,7 @@ const timer = setInterval(countdown, 1000);
 
 function countdown() {
     seconds--;
-    if (seconds === 0){
+    if (seconds === 0) {
         clearTimeout(timer);
         randomNumbersList.remove();
         form.classList.remove("d-none");
@@ -56,26 +56,24 @@ function countdown() {
 
 
 // Sezione eventi button
-button.addEventListener("click", function(event){
+button.addEventListener("click", function (event) {
     event.preventDefault();
 
     // per ogni indice, controllo se il numero inserito dall'utente
     // esiste all'interno di randomNumbers;
     const numeriIndovinati = [];
-    console.log(numeriIndovinati)
-    
-    for (let i = 0; i < 5 ; i++){
-        let userNumber = randomNumbers[i];
 
-        formNumbersField[i].value.includes(randomNumbers[i]);
-        console.log(formNumbersField[i].value.includes(randomNumbers[i]));
+    for (let i = 0; i < 5; i++) {
+        userNumbersArray.push(formNumbersField[i].value)
 
-    
-        // message.innerHTML = `Complimenti, hai indovinato ${numeriIndovinati.length} numeri: ${numeriIndovinati}`
-        
+        if (randomNumbers.includes(parseInt(formNumbersField[i].value))) {
+            numeriIndovinati.push(formNumbersField[i].value)
+            message.innerHTML = `Hai indovinato ${numeriIndovinati.length} numeri: ${numeriIndovinati}`
+        } else {
+            message.innerHTML = `Hai indovinato ${numeriIndovinati.length} numeri: ${numeriIndovinati}`
+
+        }
     }
-
-
 });
 
 
